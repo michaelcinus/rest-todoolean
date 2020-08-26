@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+header{
+    margin: 5px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: teal;
+}
+
+header input{
+    width: 15%;
+    margin: 2%;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+header button{
+    width: 10%;
+    border-radius: 5px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/* CONTAINER */
+.container{
+    margin: 5px;
+    height: 87vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: tomato;
+    color: wheat;
+}
+
+.container h1{
+    padding: 20px;
+    border-bottom: solid 1px wheat;
+}
