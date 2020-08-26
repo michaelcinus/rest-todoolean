@@ -1,3 +1,31 @@
+function cancellaLista(){
+
+    $(document).on('click', '.click', cancellaAzione);
+
+}
+
+function cancellaAzione() {
+
+    var button = $(this);
+    var id = button.data('id');
+
+
+    $.ajax({
+        url: `http://157.230.17.132:3004/todos/${id}`,
+        method: 'DELETE',
+        success: function(data) {
+
+            creaLista();
+
+        },
+        error: function(err) {
+
+            console.log('err', err);
+
+        }
+    })
+}
+
 function popolaLista() {
 
     var target = $('#button');
@@ -59,7 +87,7 @@ function stampaLista(lista) {
 
         var azione = lista[i];
 
-        target.append(`<li><span class = "click"><i class="fas fa-times"></i></span>${azione.text}</li>`);
+        target.append(`<li><span data-id="${azione.id}" class="click"><i class="fas fa-times"></i></span>${azione.text}</http:>`);
 
     }
 }
@@ -68,6 +96,7 @@ function init(){
 
     creaLista();
     popolaLista();
+    cancellaLista()
 
 }
 
