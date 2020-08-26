@@ -1,4 +1,38 @@
-function creaLista(){
+function popolaLista() {
+
+    var target = $('#button');
+    target.click(inserisciAzione);
+
+}
+
+function inserisciAzione() {
+
+    var target = $('#testo');
+    var text = target.val();
+    target.val('');
+
+    $.ajax({
+        url: 'http://157.230.17.132:3004/todos',
+        method: 'POST',
+        data: {
+            text: text
+
+        },
+        success: function(data) {
+
+            creaLista();
+
+        },
+        error: function(err) {
+
+            console.log('err', err);
+
+        }
+    })
+
+}
+
+function creaLista() {
 
     $.ajax({
         url: 'http://157.230.17.132:3004/todos',
@@ -10,20 +44,22 @@ function creaLista(){
         },
         error: function(err) {
 
+            console.log('err', err);
+
         }
     })
 }
 
-function stampaLista(lista){
+function stampaLista(lista) {
 
-    var target = $('#lista');
+    var target = $('#lista-azioni');
     target.text('');
 
-    for (var i = 0; i<lista.lenght; i++) {
+    for (var i = 0; i< lista.length; i++) {
 
-        var alimento = lista[i];
+        var azione = lista[i];
 
-        target.append(`<li>${alimento.text} - <span class="click"><b><i class="fas fa-times"></i></b></span></li>`);
+        target.append(`<li><span class = "click"><i class="fas fa-times"></i></span>${azione.text}</li>`);
 
     }
 }
@@ -31,6 +67,7 @@ function stampaLista(lista){
 function init(){
 
     creaLista();
+    popolaLista();
 
 }
 
